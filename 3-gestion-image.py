@@ -2,7 +2,7 @@
 import PIL.Image
 
 # ouverture du fichier :
-img = PIL.Image.open('james_bond.png')
+img = PIL.Image.open('3-james_bond.png')
 
 # lecture dans le fichier de la taille de l'image
 largeur, hauteur = img.size
