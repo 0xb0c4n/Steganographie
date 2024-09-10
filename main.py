@@ -2,11 +2,11 @@ import PIL.Image
 import math
 
 def get_bin_img(src="3-james_bond.png"):
-    """Prend en compte le nom du fichier image source (str)
+    """Prend en compte le nom idu fichier image source (str)
     Renvoie le tableau binaire de toutes les couleurs"""
-    img = PIL.Image.open(src)
+    img = PIL.Image.open(src) 
     width, height = img.size
-    array=[]
+    array = []
     for y in range(height):
         rank = []
         for x in range(width):
@@ -17,7 +17,19 @@ def get_bin_img(src="3-james_bond.png"):
     return array
 
 def get_bin_msg(src="3-message.txt"):
+    array = []
     with open(src) as f:
-        print(f.read())
+        msg = f.read()
+        for letter in msg:
+            array.append(bin(ord(letter))[2:])
+    return array
 
-get_bin_msg()
+def add_zeros(array):
+    for i in range(len(array)):
+        if(len(array[i]) < 8):
+            for j in range(8-len(array[i])):
+                array[i] = "0" + array[i]
+    print(array)
+
+array = get_bin_msg()
+add_zeros(array)
