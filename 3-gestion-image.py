@@ -8,7 +8,7 @@ img = PIL.Image.open('3-james_bond.png')
 largeur, hauteur = img.size
 print("largeur: ", largeur, " hauteur:", hauteur)
 
-# Lecture des couleurs du pixel de coordonnées (0,0)
+# Lecture des couleurs du pixel de coordoo nnées (0,0)
 r, v, b = img.getpixel( (0, 0) )
 print('pixel : ', (0,0),' couleur : ', (r, v, b))
 
