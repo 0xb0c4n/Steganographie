@@ -6,6 +6,9 @@ def get_bin(src="3-james_bond.png"):
     Renvoie le tableau binaire de toutes les couleurs"""
     img = PIL.Image.open(src)
     width, height = img.size
+    array=[]
     for x in range(width+1):
+        rank = []
         for y in range(height+1):
             r,v,b = img.getpixel((x,y))
+            rank.append()
