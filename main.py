@@ -42,10 +42,37 @@ def insertion(length_msg, img_array, array):
     index = 0
     for i in range(5):
         for j in range(len(img_array[0][i])):
-            length_in_bin = bin(length_msg)[2:]
-            length_in_bin = add_zeros(length_in_bin, 15)
-            print(length_in_bin)
-            print(img_array[0][i][j][:-1] + length_in_bin[j])
+            length_in_bin = add_zeros(bin(length_msg)[2:],15)
+
+            img_array[0][i][j] = list(img_array[0][i][j][:-1])
+            img_array[0][i][j].append(length_in_bin[index])
+            img_array[0][i][j] = "".join(img_array[0][i][j])
+            index+=1
+    #Encodage du message
+    start_point = 5
+    index_msg = 0
+    for column in range(len(img_array)):
+        if column == 0:
+            for elem in range(5, len(img_array[column])):
+                for color in range(len(img_array[column][elem])):
+                    img_array[column][elem][color] = list(img_array[column][elem][color][:-1])
+                    print(img_array[column][elem][color])
+                    img_array[column][elem][color].append(array[index_msg])
+                    img_array[column][elem][color] = "".join(img_array[column][elem][color])
+                    index_msg += 1
+        else:
+            for elem in range(len(img_array[column])):
+                for color in range(len(img_array[column][elem])):
+                    img_array[column][elem][color] = list(img_array[column][elem][color][:-1])
+                    img_array[column][elem][color].append(array[index_msg])
+                    img_array[column][elem][color] = "".join(img_array[column][elem][color])
+                    index_msg += 1
+            
+def inscription(element, text):
+    element = list(element)
+    element.append(text)
+    element = "".join(element)
+    return element
 
 img_array = get_bin_img()
 array, length_msg = get_bin_msg()
