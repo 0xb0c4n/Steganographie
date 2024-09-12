@@ -19,18 +19,30 @@ def binaire(image='3-james_bond.png'):
         l_compte +=1
     return lst_bin
 
+def dernier_bin(octt=None):
+    """revois la derniere bit d'un octect"""
+    oct = str(octt) 
+    rang_fin = len(oct)
+    dernier_bin[rang_fin] = oct
+    return dernier_bin
+
+
 def decyptage(lst_bin='binaire', image = '3-james_bond'):
-    """Renvois un str avec le message inscris dans l'image"""
+    """Renvois une list avec le message inscris dans l'image"""
     img = PIL.open(image)
     h, l = img.size
     h_compte, l_compte = 0 , 0
-    message = ""
+    messageEnLST = []
     while h_compte and l_compte < l:
-
-        for rang in range(len(lst_bin)+1):
-            for colonne in range(len(lst_bin[rang]['bin'])+1):
-                bin_actuel = lst_bin[rang]['bin'][colonne] 
+        for rangcol in range(3):
+            for oct in lst_bin:
+                mes = dernier_bin(oct[bin][rangcol]) 
+            messageEnLST.append(str(mes))
         h_compte +=1
         l_compte +=1
+    return messageEnLST
+
+def mis_en_forme(messageEnLST):
+    pass
 
 print(binaire('3-james_bond.png'))
