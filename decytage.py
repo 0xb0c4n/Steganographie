@@ -43,6 +43,16 @@ def decyptage(lst_bin='binaire', image = '3-james_bond'):
     return messageEnLST
 
 def mis_en_forme(messageEnLST):
-    pass
+    message= []
+    nombreC = 0
+    for nbC in range(15):
+        nombreC += nbC
+    nbCarectere = bin(nombreC)
+    message.append(nbCarectere)
+    n = 15
+    while  n < len(messageEnLST):
+        message_str = ""
+        pass
+
 
 print(binaire('3-james_bond.png'))
