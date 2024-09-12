@@ -49,9 +49,11 @@ def mis_en_forme(messageEnLST):
         nombreC += nbC
     nbCarectere = bin(nombreC)
     message.append(nbCarectere)
-    n = 15
-    while  n < len(messageEnLST):
+    rangC = 15
+    while  rangC < len(messageEnLST):
         message_str = ""
+        
+        rangC +=1 
         pass
 
 
