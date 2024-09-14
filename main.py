@@ -14,7 +14,24 @@ def get_bin_img(src="3-james_bond.png"):
             j = [bin(r)[2:],bin(v)[2:],bin(b)[2:]]
             i.append(j)
         array.append(i)
-    return array
+    return img, array
+
+def turn_to_int(binary):
+    return int(str(binary), 2)
+
+def get_img_back(img_array, src="3-james_bond.png"):
+    img = PIL.Image.open(src) 
+    width, height = img.size
+
+    for x in range(len(img_array)):
+        for y in range(len(img_array[x])):
+            img_array[x][y] = map(turn_to_int, img_array[x][y])
+            img_array[x][y] = tuple(img_array[x][y])
+            img.putpixel((x,y), img_array[x][y])
+    
+    img.save("out.png")
+    print("Fichier sauvegardé en : out.png")
+    img.close()
 
 def get_bin_msg(src="3-message.txt"):
     array = []
@@ -37,7 +54,7 @@ def add_zeros(array, nb):
 
     return array
 
-def insertion(length_msg, img_array, array):
+def insertion(length_msg, img_array, array, img):
     #Ajout des informations de codage
     index = 0
     for i in range(5):
@@ -68,8 +85,11 @@ def insertion(length_msg, img_array, array):
                         copy.append(string[index_msg])
                         index_msg += 1
 
+    return img_array
+
                     
-img_array = get_bin_img()
+img, img_array = get_bin_img()
 array, length_msg = get_bin_msg()
 array = add_zeros(array, 8)
-insertion(length_msg, img_array, array)
+img_array = insertion(length_msg, img_array, array, img)
+get_img_back(img_array)
