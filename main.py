@@ -50,6 +50,7 @@ def add_zeros(array, nb):
     else:
         for i in range(len(array)):
             if(len(array) < nb):
+                print(i)
                 array = "0" + array
 
     return array
@@ -57,10 +58,11 @@ def add_zeros(array, nb):
 def insertion(length_msg, img_array, array, img):
     #Ajout des informations de codage
     index = 0
+    print(array)
     for i in range(5):
         for j in range(len(img_array[0][i])):
             length_in_bin = add_zeros(bin(length_msg)[2:],15)
-
+            print(length_in_bin)
             img_array[0][i][j] = list(img_array[0][i][j][:-1])
             img_array[0][i][j].append(length_in_bin[index])
             img_array[0][i][j] = "".join(img_array[0][i][j])

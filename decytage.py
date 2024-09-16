@@ -27,21 +27,40 @@ def get_nb_char(img_array):
             char_nb += img_array[0][i][j][-1]
     return(int(char_nb, 2))
 
-def mis_en_forme(messageEnLST):
-    message= []
-    nombreC = 0
-    for nbC in range(15):
-        nombreC += nbC
-    nbCarectere = bin(nombreC)
-    message.append(nbCarectere)
-    n = 15
+def mis_en_forme(img_array,nb_char):
     messageVrai = ""
-    while  n < len(messageEnLST):
-        messageVrai += messageEnLST[n]
-        n +=1
-    return messageVrai
+    index = 0
+
+    for i in range(len(img_array)):
+        if i == 0:
+            for j in range(5, len(img_array[i])):
+                for k in range(len(img_array[i][j])):
+                    if nb_char*8 > index:
+                        messageVrai += img_array[i][j][k][-1]
+                        index += 1
+                    else:
+                        break
+        else:
+            for j in range(len(img_array[i])):
+                for k in range(len(img_array[i][j])):
+                    if nb_char*8 > index:
+                        messageVrai += img_array[i][j][k][-1]
+                        index += 1
+                    else:
+                        break
+        
+    o = []
+    while messageVrai:
+        o.append(messageVrai[:8])
+        messageVrai = messageVrai[8:]
+    return o
 
         
 
 img, img_array = get_bin_img('out.png')
-get_nb_char(img_array)
+nb_char = get_nb_char(img_array)
+result = mis_en_forme(img_array, nb_char)
+decoded_str = ""
+for elt in result:
+    decoded_str += chr(int(elt, 2))
+print(decoded_str)
