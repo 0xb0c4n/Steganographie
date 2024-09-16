@@ -53,8 +53,9 @@ def mis_en_forme(messageEnLST):
     messageVrai = ""
     while  n < len(messageEnLST):
         messageVrai += messageEnLST[n]
+    print(messageVrai)
     return nbCarectere and messageVrai
 
         
 
-print(binaire('3-james_bond.png'))
+print(binaire('out.png'))
