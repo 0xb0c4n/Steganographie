@@ -1,46 +1,31 @@
-import PIL.Image as PIL 
+import PIL.Image
 
 
-def binaire(image='3-james_bond.png'):
-    """Renvois une list avec 
-    la position du pixel et la couleur du pixel en binaire"""
-    img = PIL.open(image)
-    h , l = img.size
-    h_compte , l_compte = 0 , 0
-    lst_bin = []
-    while h_compte < h and l_compte < l:
-        r, v, b = img.getpixel((h_compte,l_compte))
-        bin_colR = bin(r)[2:]
-        bin_colV = bin(v)[2:]
-        bin_colB = bin(b)[2:]
-        dic_binCol = {'pixel : ': (h_compte, l_compte),'bin : ': [bin_colR, bin_colV, bin_colB] }
-        lst_bin.append(dic_binCol)
-        h_compte +=1
-        l_compte +=1
-    return lst_bin
+def get_bin_img(src="out.png"):
+    """Prend en compte le nom du fichier image source (str)
+    Renvoie le tableau binaire de toutes les couleurs"""
+    img = PIL.Image.open(src) 
+    width, height = img.size
+    array = []
+    for x in range(width):
+        i = []
+        for y in range(height):
+            r,v,b = img.getpixel((x,y))
+            j = [bin(r)[2:],bin(v)[2:],bin(b)[2:]]
+            i.append(j)
+        array.append(i)
+    return img, array
 
-def dernier_bin(octt=None):
+def dernier_bin(oct=None):
     """revois la derniere bit d'un octect"""
-    oct = str(octt) 
-    rang_fin = len(oct)
-    dernier_bin[rang_fin] = oct
-    return dernier_bin
+    return str(oct)[-1]
 
-
-def decyptage(lst_bin='binaire', image = '3-james_bond'):
-    """Renvois une list avec le message inscris dans l'image"""
-    img = PIL.open(image)
-    h, l = img.size
-    h_compte, l_compte = 0 , 0
-    messageEnLST = []
-    while h_compte and l_compte < l:
-        for rangcol in range(3):
-            for oct in lst_bin:
-                mes = dernier_bin(oct[bin][rangcol]) 
-            messageEnLST.append(str(mes))
-        h_compte +=1
-        l_compte +=1
-    return messageEnLST
+def get_nb_char(img_array):
+    char_nb = ""
+    for i in range(5):
+        for j in range(len(img_array[0][i])):
+            char_nb += img_array[0][i][j][-1]
+    return(int(char_nb, 2))
 
 def mis_en_forme(messageEnLST):
     message= []
@@ -53,9 +38,10 @@ def mis_en_forme(messageEnLST):
     messageVrai = ""
     while  n < len(messageEnLST):
         messageVrai += messageEnLST[n]
-    print(messageVrai)
-    return nbCarectere and messageVrai
+        n +=1
+    return messageVrai
 
         
 
-print(binaire('out.png'))
+img, img_array = get_bin_img('out.png')
+get_nb_char(img_array)
