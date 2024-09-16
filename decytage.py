@@ -50,9 +50,11 @@ def mis_en_forme(messageEnLST):
     nbCarectere = bin(nombreC)
     message.append(nbCarectere)
     n = 15
+    messageVrai = ""
     while  n < len(messageEnLST):
-        message_str = ""
-        pass
+        messageVrai += messageEnLST[n]
+    return nbCarectere and messageVrai
 
+        
 
 print(binaire('3-james_bond.png'))
