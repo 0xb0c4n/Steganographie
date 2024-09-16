@@ -48,10 +48,9 @@ def add_zeros(array, nb):
                 for j in range(nb-len(array[i])):
                     array[i] = "0" + array[i]
     else:
-        for i in range(len(array)):
-            if(len(array) < nb):
-                print(i)
-                array = "0" + array
+        while nb > len(array):
+            print(len(array))
+            array = "0" + array
 
     return array
 
@@ -95,3 +94,6 @@ array, length_msg = get_bin_msg()
 array = add_zeros(array, 8)
 img_array = insertion(length_msg, img_array, array, img)
 get_img_back(img_array)
+print(array)
+for i in array:
+    print(chr(int(i, 2)))
