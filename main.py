@@ -48,19 +48,20 @@ def add_zeros(array, nb):
                 for j in range(nb-len(array[i])):
                     array[i] = "0" + array[i]
     else:
-        for i in range(len(array)):
-            if(len(array) < nb):
-                array = "0" + array
+        while nb > len(array):
+            print(len(array))
+            array = "0" + array
 
     return array
 
 def insertion(length_msg, img_array, array, img):
     #Ajout des informations de codage
     index = 0
+    print(array)
     for i in range(5):
         for j in range(len(img_array[0][i])):
             length_in_bin = add_zeros(bin(length_msg)[2:],15)
-
+            print(length_in_bin)
             img_array[0][i][j] = list(img_array[0][i][j][:-1])
             img_array[0][i][j].append(length_in_bin[index])
             img_array[0][i][j] = "".join(img_array[0][i][j])
@@ -97,3 +98,7 @@ img, img_out = get_bin_img('out.png')
 print(bin(length_msg))
 for j in range(8):
     print(img_out[0][j])
+
+print(array)
+for i in array:
+    print(chr(int(i, 2)))
