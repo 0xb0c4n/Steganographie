@@ -69,7 +69,7 @@ def insertion(length_msg, img_array, array, img):
     index_msg = 0
     for i in range(len(img_array)):
         if i == 0:
-            for j in range(len(img_array[i])):
+            for j in range(5,len(img_array[i])):
                 for k in range(len(img_array[i][j])):
                     if index_msg < length_msg:
                         copy = list(img_array[i][j][k][:-1])
@@ -93,3 +93,7 @@ array, length_msg = get_bin_msg()
 array = add_zeros(array, 8)
 img_array = insertion(length_msg, img_array, array, img)
 get_img_back(img_array)
+img, img_out = get_bin_img('out.png')
+print(bin(length_msg))
+for j in range(8):
+    print(img_out[0][j])
