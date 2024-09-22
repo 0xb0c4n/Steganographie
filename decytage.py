@@ -52,8 +52,10 @@ def mis_en_forme(messageEnLST):
     rangC = 15
     while  rangC < len(messageEnLST):
         message_str = ""
-        
-        rangC +=1 
+        message_bin = 0
+        for i in range():
+            pass
+        rangC +=8 
         pass
 
 
