@@ -2,8 +2,7 @@ import PIL.Image as PIL
 
 
 def binaire(image='3-james_bond.png'):
-    """Renvois une list avec 
-    la position du pixel et la couleur du pixel en binaire"""
+    """Renvois une list avec la position du pixel et la couleur du pixel en binaire"""
     img = PIL.open(image)
     h , l = img.size
     h_compte , l_compte = 0 , 0
@@ -28,7 +27,7 @@ def dernier_bin(octt=None):
 
 
 def decyptage(lst_bin='binaire', image = '3-james_bond'):
-    """Renvois une list avec le message inscris dans l'image"""
+    """Renvois une list avec le message inscris dans l'image en binaire"""
     img = PIL.open(image)
     h, l = img.size
     h_compte, l_compte = 0 , 0
@@ -43,6 +42,7 @@ def decyptage(lst_bin='binaire', image = '3-james_bond'):
     return messageEnLST
 
 def mis_en_forme(messageEnLST):
+    """Renvois une str. Ce qui reprsent le message"""
     message= []
     nombreC = 0
     for nbC in range(15):
