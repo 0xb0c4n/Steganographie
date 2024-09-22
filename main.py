@@ -17,9 +17,11 @@ def get_bin_img(src="3-james_bond.png"):
     return img, array
 
 def turn_to_int(binary):
+    """Prend un binaire de type array pour le transformer en entier"""
     return int(str(binary), 2)
 
 def get_img_back(img_array, src="3-james_bond.png"):
+    """Renvois le message encoder dans l'image"""
     img = PIL.Image.open(src) 
     width, height = img.size
 
@@ -34,6 +36,7 @@ def get_img_back(img_array, src="3-james_bond.png"):
     img.close()
 
 def get_bin_msg(src="3-message.txt"):
+    """Renvois le nombre de carectaire possible"""
     array = []
     with open(src) as f:
         msg = f.read()
@@ -42,6 +45,7 @@ def get_bin_msg(src="3-message.txt"):
     return array, len(msg)
 
 def add_zeros(array, nb):
+    """Renvois un array d'un binaire avec des 0 a gauche"""
     if(type(array) == list):
         for i in range(len(array)):
             if(len(array[i]) < nb):
@@ -54,6 +58,7 @@ def add_zeros(array, nb):
     return array
 
 def insertion(length_msg, img_array, array, img):
+    """Inser le message dans l'image"""
     #Ajout des informations de codage
     index = 0
     for i in range(5):
