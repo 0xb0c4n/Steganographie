@@ -17,10 +17,11 @@ def get_bin_img(src="out.png"):
     return img, array
 
 def dernier_bin(oct=None):
-    """revois la derniere bit d'un octect"""
+    """Renvois la derniere bit d'un octect"""
     return str(oct)[-1]
 
 def get_nb_char(img_array):
+    """Renvois le nombre de charectere possible a encoder"""
     char_nb = ""
     for i in range(5):
         for j in range(len(img_array[0][i])):
@@ -28,6 +29,7 @@ def get_nb_char(img_array):
     return(int(char_nb, 2))
 
 def mis_en_forme(img_array,nb_char):
+    """Renvois le message en str"""
     messageVrai = ""
     index = 0
 
