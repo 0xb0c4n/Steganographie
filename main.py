@@ -17,9 +17,11 @@ def get_bin_img(src="3-james_bond.png"):
     return img, array
 
 def turn_to_int(binary):
+    """Prend un binaire de type array pour le transformer en entier"""
     return int(str(binary), 2)
 
 def get_img_back(img_array, src="3-james_bond.png"):
+    """Renvois le message encoder dans l'image"""
     img = PIL.Image.open(src) 
     width, height = img.size
 
@@ -34,6 +36,7 @@ def get_img_back(img_array, src="3-james_bond.png"):
     img.close()
 
 def get_bin_msg(src="3-message.txt"):
+    """Renvois le nombre de carectaire possible"""
     array = []
     with open(src) as f:
         msg = f.read()
@@ -42,6 +45,7 @@ def get_bin_msg(src="3-message.txt"):
     return array, len(msg)
 
 def add_zeros(array, nb):
+    """Renvois un array d'un binaire avec des 0 a gauche"""
     if(type(array) == list):
         for i in range(len(array)):
             if(len(array[i]) < nb):
@@ -49,41 +53,42 @@ def add_zeros(array, nb):
                     array[i] = "0" + array[i]
     else:
         while nb > len(array):
-            print(len(array))
             array = "0" + array
 
     return array
 
 def insertion(length_msg, img_array, array, img):
+    """Inser le message dans l'image"""
     #Ajout des informations de codage
     index = 0
-    print(array)
     for i in range(5):
         for j in range(len(img_array[0][i])):
             length_in_bin = add_zeros(bin(length_msg)[2:],15)
-            print(length_in_bin)
             img_array[0][i][j] = list(img_array[0][i][j][:-1])
             img_array[0][i][j].append(length_in_bin[index])
             img_array[0][i][j] = "".join(img_array[0][i][j])
             index+=1
     #Encodage du message
     index_msg = 0
+    string = "".join(array)
+    print(string)
+    print(length_msg)
     for i in range(len(img_array)):
         if i == 0:
-            for j in range(len(img_array[i])):
+            for j in range(5,len(img_array[i])):
                 for k in range(len(img_array[i][j])):
-                    if index_msg < length_msg:
+                    if index_msg < length_msg*8:
                         copy = list(img_array[i][j][k][:-1])
-                        string = "".join(array)
                         copy.append(string[index_msg])
+                        img_array[i][j][k] = "".join(copy)
                         index_msg += 1
         else:
             for j in range(len(img_array[i])):
                 for k in range(len(img_array[i][j])):
-                    if index_msg < length_msg:
+                    if index_msg < length_msg*8:
                         copy = list(img_array[i][j][k][:-1])
-                        string = "".join(array)
                         copy.append(string[index_msg])
+                        img_array[i][j][k] = "".join(copy)
                         index_msg += 1
 
     return img_array
@@ -94,6 +99,5 @@ array, length_msg = get_bin_msg()
 array = add_zeros(array, 8)
 img_array = insertion(length_msg, img_array, array, img)
 get_img_back(img_array)
-print(array)
-for i in array:
-    print(chr(int(i, 2)))
+img, img_out = get_bin_img('out.png')
+
