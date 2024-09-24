@@ -92,7 +92,8 @@ def insertion(length_msg, img_array, array):
     return img_array
 
 
-def encodage():             
+def encodage():  
+    """Encode le message dans l'image"""           
     img_array = get_bin_img()
     array, length_msg = get_bin_msg()
     array = add_zeros(array, 8)

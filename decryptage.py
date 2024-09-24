@@ -59,6 +59,7 @@ def mis_en_forme(img_array,nb_char):
 
         
 def decrypte():
+    """Renvois un str du message"""
     img_array = get_bin_img_d()
     nb_char = get_nb_char(img_array)
     result = mis_en_forme(img_array, nb_char)
