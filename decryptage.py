@@ -1,7 +1,7 @@
 import PIL.Image
 
 
-def get_bin_img(src="out.png"):
+def get_bin_img_d(src="out.png"):
     """Prend en compte le nom du fichier image source (str)
     Renvoie le tableau binaire de toutes les couleurs"""
     img = PIL.Image.open(src) 
@@ -14,7 +14,7 @@ def get_bin_img(src="out.png"):
             j = [bin(r)[2:],bin(v)[2:],bin(b)[2:]]
             i.append(j)
         array.append(i)
-    return img, array
+    return array
 
 def dernier_bin(oct=None):
     """Renvois la derniere bit d'un octect"""
@@ -58,11 +58,11 @@ def mis_en_forme(img_array,nb_char):
     return o
 
         
-
-img, img_array = get_bin_img('out.png')
-nb_char = get_nb_char(img_array)
-result = mis_en_forme(img_array, nb_char)
-decoded_str = ""
-for elt in result:
-    decoded_str += chr(int(elt, 2))
-print(decoded_str)
+def decrypte():
+    img_array = get_bin_img_d()
+    nb_char = get_nb_char(img_array)
+    result = mis_en_forme(img_array, nb_char)
+    decoded_str = ""
+    for elt in result:
+        decoded_str += chr(int(elt, 2))
+    return decoded_str

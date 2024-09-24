@@ -14,7 +14,7 @@ def get_bin_img(src="3-james_bond.png"):
             j = [bin(r)[2:],bin(v)[2:],bin(b)[2:]]
             i.append(j)
         array.append(i)
-    return img, array
+    return array
 
 def turn_to_int(binary):
     """Prend un binaire de type array pour le transformer en entier"""
@@ -57,7 +57,7 @@ def add_zeros(array, nb):
 
     return array
 
-def insertion(length_msg, img_array, array, img):
+def insertion(length_msg, img_array, array):
     """Inser le message dans l'image"""
     #Ajout des informations de codage
     index = 0
@@ -71,8 +71,6 @@ def insertion(length_msg, img_array, array, img):
     #Encodage du message
     index_msg = 0
     string = "".join(array)
-    print(string)
-    print(length_msg)
     for i in range(len(img_array)):
         if i == 0:
             for j in range(5,len(img_array[i])):
@@ -93,11 +91,10 @@ def insertion(length_msg, img_array, array, img):
 
     return img_array
 
-                    
-img, img_array = get_bin_img()
-array, length_msg = get_bin_msg()
-array = add_zeros(array, 8)
-img_array = insertion(length_msg, img_array, array, img)
-get_img_back(img_array)
-img, img_out = get_bin_img('out.png')
 
+def encodage():             
+    img_array = get_bin_img()
+    array, length_msg = get_bin_msg()
+    array = add_zeros(array, 8)
+    img_array = insertion(length_msg, img_array, array)
+    get_img_back(img_array)

@@ -1,5 +1,5 @@
-import PIL.Image
-import math
-from main import insertion, get_bin_msg, get_bin_img
+from encodage import *
+from decryptage import *
 
-assert insertion
+with open("3-message.txt") as f:
+    assert decrypte() == f.read()
