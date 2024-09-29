@@ -1,5 +1,6 @@
-import PIL.Image
+#!/usr/bin/python3
 
+import PIL.Image
 
 def get_bin_img_d(src="out.png"):
     """Prend en compte le nom du fichier image source (str)
@@ -16,12 +17,10 @@ def get_bin_img_d(src="out.png"):
         array.append(i)
     return array
 
-def dernier_bin(oct=None):
-    """Renvois la derniere bit d'un octect"""
-    return str(oct)[-1]
 
 def get_nb_char(img_array):
-    """Renvois le nombre de charectere possible a encoder"""
+    """Prend en paramètre l'image (sous forme d'une liste avec les couleurs de chaque pixel en binaire)
+    Renvoie la taille récupérée du message encodé"""
     char_nb = ""
     for i in range(5):
         for j in range(len(img_array[0][i])):
@@ -29,7 +28,8 @@ def get_nb_char(img_array):
     return(int(char_nb, 2))
 
 def mis_en_forme(img_array,nb_char):
-    """Renvois le message en str"""
+    """Prend en paramètre l'image (sous forme d'une liste avec les couleurs de chaque pixel en binaire) et le nombre de caractères du message
+    Renvoie le message décodé en binaire """
     messageVrai = ""
     index = 0
 
@@ -59,11 +59,13 @@ def mis_en_forme(img_array,nb_char):
 
         
 def decrypte():
-    """Renvois un str du message"""
+    """Ne prend rien en paramètre
+    Renvoie le message transformé de binaire en str"""
     img_array = get_bin_img_d()
     nb_char = get_nb_char(img_array)
     result = mis_en_forme(img_array, nb_char)
     decoded_str = ""
     for elt in result:
         decoded_str += chr(int(elt, 2))
+    print("\n" + decoded_str)
     return decoded_str

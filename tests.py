@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from encodage import *
 from decryptage import *
 
