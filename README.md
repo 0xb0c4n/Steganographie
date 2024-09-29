@@ -12,3 +12,8 @@
    git clone https://github.com/0xb0c4n/Steganographie.git
    cd steganographie
    pip install -r requirements.txt
+   ```
+2. Exécutez le fichier :
+   ```bash
+   python3 main.py
+   ```
