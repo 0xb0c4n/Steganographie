@@ -3,7 +3,7 @@ from encodage import *
 from decryptage import *
 
 f = Figlet(font='slant')
-print(f.renderText('Steganographie'))
+print(f.renderText('DIARRHEA'))
 print("par 0xb0c4n et 0q3i \n\n")
 
 print("1. Encoder un message")

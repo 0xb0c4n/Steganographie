@@ -62,6 +62,7 @@ def decrypte():
     """Ne prend rien en paramètre
     Renvoie le message transformé de binaire en str"""
     img_array = get_bin_img_d()
+    print(img_array)
     nb_char = get_nb_char(img_array)
     result = mis_en_forme(img_array, nb_char)
     decoded_str = ""
